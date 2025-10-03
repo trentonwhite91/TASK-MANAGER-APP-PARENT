@@ -46,3 +46,5 @@ User selects "Create Task"
 # UC7: Update Project Details
 
 # UC8: Update Task Details
+
+# UC9: New User Onboarding
