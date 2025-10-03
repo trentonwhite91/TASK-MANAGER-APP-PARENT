@@ -35,3 +35,14 @@ User selects "Create Task"
 ### Postcondition: 
 - Task is available under the project
 
+# UC3: User Login
+
+# UC4: Search Project
+
+# UC5: View Project
+
+# UC6: Add user to project
+
+# UC7: Update Project Details
+
+# UC8: Update Task Details
