@@ -11,6 +11,7 @@ This system will allow small distributed teams (1–15 people) to create, assign
 ### 1.3 Definitions, Acronyms, Abbreviations
 - CRUD: Create, Read, Update, Delete
 - AI Recommendation Engine: Module that suggests optimal task assignments
+- JWT: JSON Web Token
 
 ### 1.4 References
 - Vision Document (VISION.md)
@@ -46,7 +47,7 @@ The system is a standalone web and mobile PWA (Progressive Web App) with a Sprin
 - FR3: The system shall support assigning tasks to team members
 - FR4: The system shall allow team members to update task status (To Do, In Progress, Done)
 - FR5: The system shall provide AI-based recommendations for workload balancing
-- FR6: The system shall allow team leads to view overall team progress in a dashboard
+- FR6: The system shall allow team members to view overall team progress in a dashboard
 - FR7: The system shall allow team leads to add team members to a project
 - FR8: The system shall only allow users who are a part of a project to view or edit tasks which are a part of that project
 
