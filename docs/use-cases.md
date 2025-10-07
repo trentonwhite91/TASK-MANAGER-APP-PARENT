@@ -144,3 +144,21 @@ User selects "Create Account"
 5. User is directed back to the login page
 ### Postcondition: 
 - A user is created
+
+# UC9: Add New Administrator User
+### Actor: 
+Administrator
+### Precondition:
+- User is logged in 
+- User currently has administrator privaleges
+### Trigger: 
+User selects "Add Administrator"
+### Main Flow: 
+1. User selects "Settings"
+2. User selects "Administrator"
+3. User selects "Add Administrator"
+4. User searches for the desired username
+5. User confirms the action
+6. A confirmation is shown to the user
+### Postcondition: 
+- A user is promoted to administrator privaleges 
