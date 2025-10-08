@@ -97,6 +97,26 @@
         <mxCell id="Ce3aVFVNn7xp89YvEed3-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ce3aVFVNn7xp89YvEed3-4" target="Ce3aVFVNn7xp89YvEed3-5">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="Ce3aVFVNn7xp89YvEed3-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="Ce3aVFVNn7xp89YvEed3-15" target="IqzsYsQvZj2FuSScJM86-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1020" y="119" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="810" y="100" />
+              <mxPoint x="810" y="160" />
+              <mxPoint x="960" y="160" />
+              <mxPoint x="960" y="229" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ce3aVFVNn7xp89YvEed3-15" value="Priority Prediction Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="670" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ce3aVFVNn7xp89YvEed3-16" value="PostgreSQL RDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="850" y="60" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Ce3aVFVNn7xp89YvEed3-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ce3aVFVNn7xp89YvEed3-15" target="Ce3aVFVNn7xp89YvEed3-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
