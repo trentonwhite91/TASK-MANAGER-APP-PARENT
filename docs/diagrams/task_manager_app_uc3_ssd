@@ -1,25 +1,34 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.5">
   <diagram name="Page-1" id="-wnpeHQiwJ_2-IU7qJ_3">
-    <mxGraphModel dx="541" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="784" dy="1102" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="ZOiskXKLKaiEp11RlYiM-1" value=":User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" vertex="1" parent="1">
+        <mxCell id="ZOiskXKLKaiEp11RlYiM-1" value=":User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" parent="1" vertex="1">
           <mxGeometry x="70" y="130" width="100" height="1110" as="geometry" />
         </mxCell>
-        <mxCell id="ZOiskXKLKaiEp11RlYiM-2" value=":AuthService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=0;glass=0;shadow=0;" vertex="1" parent="1">
+        <mxCell id="ZOiskXKLKaiEp11RlYiM-2" value=":AuthService" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=0;glass=0;shadow=0;" parent="1" vertex="1">
           <mxGeometry x="490" y="130" width="100" height="1110" as="geometry" />
         </mxCell>
-        <mxCell id="ZOiskXKLKaiEp11RlYiM-3" value="login" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.51;exitY=0.108;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="ZOiskXKLKaiEp11RlYiM-1" target="ZOiskXKLKaiEp11RlYiM-2">
+        <mxCell id="ZOiskXKLKaiEp11RlYiM-3" value="login" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.51;exitY=0.108;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ZOiskXKLKaiEp11RlYiM-1" target="ZOiskXKLKaiEp11RlYiM-2" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="120" y="250" as="sourcePoint" />
             <mxPoint x="200" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ZOiskXKLKaiEp11RlYiM-4" value="response with session JWT" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" edge="1" parent="1">
+        <mxCell id="ZOiskXKLKaiEp11RlYiM-4" value="response with session JWT" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="539.5000000000002" y="300" as="sourcePoint" />
-            <mxPoint x="119.81034482758616" y="300" as="targetPoint" />
+            <mxPoint x="539.5000000000002" y="340" as="sourcePoint" />
+            <mxPoint x="119.81034482758616" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QaNtr1JOxqNu3yQ-AgYK-1" value=":MessageQueue" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};rounded=0;glass=0;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="810" y="130" width="100" height="1110" as="geometry" />
+        </mxCell>
+        <mxCell id="QaNtr1JOxqNu3yQ-AgYK-3" value="userAuthenticatedMessage" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.51;exitY=0.108;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="QaNtr1JOxqNu3yQ-AgYK-1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="540" y="290" as="sourcePoint" />
+            <mxPoint x="740" y="290" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
