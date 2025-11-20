@@ -4,6 +4,9 @@ This app will offer task management capabilities with integrated AI features suc
 # Kanban Board
 https://whitetrenton91s-team.monday.com/boards/18103197758/views/216077866
 
+# Microservice repos
+1. https://github.com/trentonwhite91/TASK-MANAGER-APP-USER-SERVICE
+
 # How to run locally
 //TODO
 
