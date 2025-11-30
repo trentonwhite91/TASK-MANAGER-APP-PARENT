@@ -8,7 +8,11 @@ https://whitetrenton91s-team.monday.com/boards/18103197758/views/216077866
 1. https://github.com/trentonwhite91/TASK-MANAGER-APP-USER-SERVICE
 
 # How to run locally
-//TODO
+1. Clone this parent repo and all of the microservice repos into the same parent directory
+2. Build all java files via maven
+3. Build the docker-compose.yml file to start the containers
+
+//TODO eventually step 3 will change to kubernetes
 
 # Demo link
 //TODO
