@@ -1,12 +1,19 @@
+networks:
+  internal:
+    internal: true
+
 services:
   user-service:
     build:
       context: ../../TASK-MANAGER-APP-USER-SERVICE
       dockerfile: Dockerfile.app
     container_name: user-service-app
-    ports:
-      - "8443:8443"
-      - "8080:8080"
+    ports: # No ports are published to the host 
+      [] 
+    expose: # Ports exposed for inter-service communication only
+      - "8081"
+    networks:
+      - internal
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://user-service-db:5432/${USER_SERVICE_POSTGRES_DB}
       SPRING_DATASOURCE_USERNAME: ${USER_SERVICE_POSTGRES_USER}
@@ -15,6 +22,44 @@ services:
     depends_on:
       user-service-db:
         condition: service_healthy
+  auth-service:
+    build:
+      context: ../../TASK-MANAGER-APP-AUTH-SERVICE
+      dockerfile: Dockerfile.app
+    container_name: auth-service-app
+    ports: # No ports are published to the host 
+      []  
+    expose: # Ports exposed for inter-service communication only
+      - "8082"
+    networks:
+      - internal
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://auth-service-db:5432/${AUTH_SERVICE_POSTGRES_DB}
+      SPRING_DATASOURCE_USERNAME: ${AUTH_SERVICE_POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${AUTH_SERVICE_POSTGRES_PASSWORD}
+      KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
+    depends_on:
+      auth-service-db:
+        condition: service_healthy
+  api-gateway-service:
+    build:
+      context: ../../TASK-MANAGER-APP-API-GATEWAY-SERVICE
+      dockerfile: Dockerfile.app
+    container_name: api-gateway-service-app
+    ports: # Expose ports to host for external access
+      - "8080:8080" 
+      - "8443:8443" 
+    networks:
+      - internal
+      - default
+    environment:
+      GATEWAY_SECRET: ${GATEWAY_SECRET}
+      KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
+    depends_on:
+      user-service:
+        condition: service_started
+      auth-service:
+        condition: service_started
 
   user-service-db:
     image: postgres:17
