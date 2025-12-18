@@ -18,6 +18,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://user-service-db:5432/${USER_SERVICE_POSTGRES_DB}
       SPRING_DATASOURCE_USERNAME: ${USER_SERVICE_POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${USER_SERVICE_POSTGRES_PASSWORD}
+      SPRING_PROFILES_ACTIVE: prod
       KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
       GATEWAY_SECRET: ${GATEWAY_SECRET}
     depends_on:
@@ -38,6 +39,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://auth-service-db:5432/${AUTH_SERVICE_POSTGRES_DB}
       SPRING_DATASOURCE_USERNAME: ${AUTH_SERVICE_POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${AUTH_SERVICE_POSTGRES_PASSWORD}
+      SPRING_PROFILES_ACTIVE: prod
       KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
       GATEWAY_SECRET: ${GATEWAY_SECRET}
     depends_on:
@@ -45,7 +47,7 @@ services:
         condition: service_healthy
   api-gateway-service:
     build:
-      context: ../../TASK-MANAGER-APP-API-GATEWAY-SERVICE
+      context: ../../TASK-MANAGER-APP-API-GATEWAY
       dockerfile: Dockerfile.app
     container_name: api-gateway-service-app
     ports: # Expose ports to host for external access
@@ -57,6 +59,7 @@ services:
     environment:
       GATEWAY_SECRET: ${GATEWAY_SECRET}
       KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
+      SPRING_PROFILES_ACTIVE: prod
     depends_on:
       user-service:
         condition: service_started
@@ -75,8 +78,27 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - internal
     volumes:
       - user-service-pgdata:/var/lib/postgresql
+  auth-service-db:
+    image: postgres:17
+    container_name: auth-service-db
+    environment:
+      POSTGRES_USER: ${AUTH_SERVICE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${AUTH_SERVICE_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${AUTH_SERVICE_POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${AUTH_SERVICE_POSTGRES_USER} -d ${AUTH_SERVICE_POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internal
+    volumes:
+      - auth-service-pgdata:/var/lib/postgresql
 
 volumes:
   user-service-pgdata:
+  auth-service-pgdata:
