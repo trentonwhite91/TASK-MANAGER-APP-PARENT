@@ -34,8 +34,10 @@ replay_pid*
 
 # Certificates
 *.crt
+*.csr
 *.pem
 *.key
 *.p12
 *.jks
+*.srl
 keystore.*

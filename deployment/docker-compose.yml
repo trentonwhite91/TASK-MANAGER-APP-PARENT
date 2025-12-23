@@ -11,7 +11,7 @@ services:
     ports: # No ports are published to the host 
       [] 
     expose: # Ports exposed for inter-service communication only
-      - "8081"
+      - "8444"
     networks:
       - internal
     environment:
@@ -19,7 +19,7 @@ services:
       SPRING_DATASOURCE_USERNAME: ${USER_SERVICE_POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${USER_SERVICE_POSTGRES_PASSWORD}
       SPRING_PROFILES_ACTIVE: prod
-      KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
+      KEYSTORE_PASSWORD: ${USER_SERVICE_KEYSTORE_PASSWORD}
       GATEWAY_SECRET: ${GATEWAY_SECRET}
     depends_on:
       user-service-db:
@@ -32,7 +32,7 @@ services:
     ports: # No ports are published to the host 
       []  
     expose: # Ports exposed for inter-service communication only
-      - "8082"
+      - "8445"
     networks:
       - internal
     environment:
@@ -40,7 +40,7 @@ services:
       SPRING_DATASOURCE_USERNAME: ${AUTH_SERVICE_POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${AUTH_SERVICE_POSTGRES_PASSWORD}
       SPRING_PROFILES_ACTIVE: prod
-      KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
+      KEYSTORE_PASSWORD: ${AUTH_SERVICE_KEYSTORE_PASSWORD}
       GATEWAY_SECRET: ${GATEWAY_SECRET}
     depends_on:
       auth-service-db:
@@ -58,7 +58,7 @@ services:
       - default
     environment:
       GATEWAY_SECRET: ${GATEWAY_SECRET}
-      KEYSTORE_PASSWORD: ${KEYSTORE_PASSWORD}
+      KEYSTORE_PASSWORD: ${API_GATEWAY_KEYSTORE_PASSWORD}
       SPRING_PROFILES_ACTIVE: prod
     depends_on:
       user-service:
