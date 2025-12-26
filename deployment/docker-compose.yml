@@ -49,6 +49,8 @@ services:
     build:
       context: ../../TASK-MANAGER-APP-API-GATEWAY
       dockerfile: Dockerfile.app
+      args:
+        KEYSTORE_PASSWORD: ${API_GATEWAY_KEYSTORE_PASSWORD}
     container_name: api-gateway-service-app
     ports: # Expose ports to host for external access
       - "8080:8080" 
