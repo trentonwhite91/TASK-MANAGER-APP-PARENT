@@ -3,6 +3,7 @@ networks:
     internal: true
 
 services:
+  #  Application Services
   user-service:
     build:
       context: ../../TASK-MANAGER-APP-USER-SERVICE
@@ -68,6 +69,7 @@ services:
       auth-service:
         condition: service_started
 
+  # Database Services
   user-service-db:
     image: postgres:17
     container_name: user-service-db
@@ -101,6 +103,41 @@ services:
     volumes:
       - auth-service-pgdata:/var/lib/postgresql
 
+  # Messaging Services
+  kafka:
+    image: confluentinc/cp-kafka:8.1.1
+    container_name: kafka
+    networks:
+      - internal
+    expose:
+      - "9092"
+      - "9093"
+    environment:
+      # === KRaft mode ===
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+
+      # === Listeners (must include BOTH controller + broker) ===
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+
+      # === Required for storage formatting ===
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      CLUSTER_ID: "4L6g3nShT-eMCtK--X86sw"
+
+      # === Topic/cluster defaults ===
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+
 volumes:
   user-service-pgdata:
   auth-service-pgdata:
+  kafka_data:
